@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<header>
+  <p style="display:none">{% block title %} GymPoint | Alunos {% endblock %}</p>
+  <h1>Gerenciando alunos</h1>
+  <aside>
+    <a href="/create-user">
+      <span class="material-icons" style="color:#FFF; font-size:20px;">
+        add
+      </span>
+      Cadastrar
+    </a>
+    <input
+      type="text"
+      placeholder="Buscar aluno"
+    />
+  </aside>
+</header>
+
+<table cellSpacing="0" class="list">
+  <thead>
+    <tr>
+      <th>NOME</th>
+      <th>E-MAIL</th>
+      <th>CPF</th>
+      <th id="center">IDADE</th>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Brendon Vicente Rocha Silva</td>
+      <td>bredstone13@gmail.com</td>
+      <td>476.582.928-69</td>
+      <td id="center">21</td>
+      <td id="update">
+        <a href="#" id="update">
+          editar
+        </a>
+      </td>
+      <td id="delete">
+        <button type="button" id="delete">
+          apagar
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td>Brendon Vicente Rocha Silva</td>
+      <td>bredstone13@gmail.com</td>
+      <td>476.582.928-69</td>
+      <td id="center">21</td>
+      <td id="update">
+        <a href="#" id="update">
+          editar
+        </a>
+      </td>
+      <td id="delete">
+        <button type="button" id="delete">
+          apagar
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td>Brendon Vicente Rocha Silva</td>
+      <td>bredstone13@gmail.com</td>
+      <td>476.582.928-69</td>
+      <td id="center">21</td>
+      <td id="update">
+        <a href="#" id="update">
+          editar
+        </a>
+      </td>
+      <td id="delete">
+        <button type="button" id="delete">
+          apagar
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td>Brendon Vicente Rocha Silva</td>
+      <td>bredstone13@gmail.com</td>
+      <td>476.582.928-69</td>
+      <td id="center">21</td>
+      <td id="update">
+        <a href="#" id="update">
+          editar
+        </a>
+      </td>
+      <td id="delete">
+        <button type="button" id="delete">
+          apagar
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<header>
+  <p style="display:none">{% block title %} GymPoint | Treinadores {% endblock %}</p>
+  <h1>Gerenciando treinadores</h1>
+  <aside>
+    <a href="/create-trainer">
+      <span class="material-icons" style="color:#FFF; font-size:20px;">
+        add
+      </span>
+      Cadastrar
+    </a>
+    <input
+      type="text"
+      placeholder="Buscar treinador"
+    />
+  </aside>
+</header>
+
+<table cellSpacing="0" class="list">
+  <thead>
+    <tr>
+      <th>NOME</th>
+      <th>E-MAIL</th>
+      <th id="center">ATENDIMENTO</th>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Brendon Vicente Rocha Silva</td>
+      <td>bredstone13@gmail.com</td>
+      <td id="center">07:30 - 16:30</td>
+      <td id="update">
+        <a href="#" id="update">
+          editar
+        </a>
+      </td>
+      <td id="delete">
+        <button type="button" id="delete">
+          apagar
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td>Brendon Vicente Rocha Silva</td>
+      <td>bredstone13@gmail.com</td>
+      <td id="center">07:30 - 16:30</td>
+      <td id="update">
+        <a href="#" id="update">
+          editar
+        </a>
+      </td>
+      <td id="delete">
+        <button type="button" id="delete">
+          apagar
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td>Brendon Vicente Rocha Silva</td>
+      <td>bredstone13@gmail.com</td>
+      <td id="center">07:30 - 16:30</td>
+      <td id="update">
+        <a href="#" id="update">
+          editar
+        </a>
+      </td>
+      <td id="delete">
+        <button type="button" id="delete">
+          apagar
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td>Brendon Vicente Rocha Silva</td>
+      <td>bredstone13@gmail.com</td>
+      <td id="center">07:30 - 16:30</td>
+      <td id="update">
+        <a href="#" id="update">
+          editar
+        </a>
+      </td>
+      <td id="delete">
+        <button type="button" id="delete">
+          apagar
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+{% endblock %}

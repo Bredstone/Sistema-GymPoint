@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/global.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/header.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/content.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/list.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/form.css') }}">
+
+    <title>{% block title %} {% endblock %}</title>
+  </head>
+  <body>
+    <!--Header-->
+    <div class="header">
+      <div class="header-content">
+        <nav>
+          <img src="{{ url_for('static', filename='img/logo-header.svg') }}" alt="logo" />
+
+          <a href="/users">Alunos</a>
+          <a href="/plans">Planos</a>
+          <a href="/registrations">Matrículas</a>
+          <a href="/trainers">Treinadores</a>
+          <a href="/receptionists">Recepcionistas</a>
+        </nav>
+
+        <aside>
+          <strong>Usuário</strong>
+          <button type="button" onClick="">
+            sair do sistema
+          </button>
+        </aside>
+      </div>
+    </div>
+
+    <!--Content-->
+    <div class="wrapper">
+      <div class="content" size=200 >{% block content %} {% endblock %}</div>
+    </div>
+  </body>
+</html>

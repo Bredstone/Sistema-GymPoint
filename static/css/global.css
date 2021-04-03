@@ -1,0 +1,61 @@
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: border-box;
+}
+
+*:focus {
+  outline: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+
+body, input, textarea, button {
+  font: 14px "Roboto", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+input {
+  font-size: 16px;
+  padding: 10px 15px;
+  border-radius: 4px;
+  border: solid 1px #ddd;
+  margin-bottom: 10px;
+  margin-top: 8px;
+}
+
+textarea {
+  font-size: 16px;
+  padding: 10px 15px;
+  border-radius: 4px;
+  border: solid 1px #ddd;
+  margin-bottom: 10px;
+  margin-top: 8px;
+  resize: none;
+}
+
+p {
+  font-size: 14px;
+  font-weight: bold;
+  color: #444444;
+  margin-top: 10px;
+}

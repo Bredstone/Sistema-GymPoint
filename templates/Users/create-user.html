@@ -1,0 +1,187 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form>
+  <header>
+    <p style="display:none">{% block title %} GymPoint | Cadastro de Aluno {% endblock %}</p>
+    <h1>Cadastro de aluno</h1>
+    <aside>
+      <a href="/users" id="back">
+        <span class="material-icons" style="color:#FFF; font-size:20px;">
+          keyboard_arrow_left
+        </span>
+        Voltar
+      </a>
+      <button type="submit">
+        <span class="material-icons" style="color:#FFF; font-size:20px;">
+          check
+        </span>
+        Salvar
+      </button>
+    </aside>
+  </header>
+
+  <div class="container">
+    <div>
+      <span>
+        <p>NOME COMPLETO</p>
+        <Input type="text" name="name" placeholder="Ethan Hunt" required />
+      </span>
+
+      <span>
+        <p>CPF</p>
+        <Input type="text" name="cpf" placeholder="476.582.928-69" required />
+      </span>
+    </div>
+
+    <p>ENDEREÇO DE EMAIL</p>
+    <Input
+      type="email"
+      name="email"
+      placeholder="exemplo@email.com"
+      required
+    />
+
+    <div>
+      <span>
+        <p>TELEFONE</p>
+        <Input type="text" name="phone" placeholder="(13) 99135-3538" required />
+      </span>
+
+      <span>
+        <p>TELEFONE DE EMERGÊNCIA</p>
+        <Input type="text" name="emergency-phone" placeholder="(13) 98808-5713" required />
+      </span>
+    </div>
+
+    <div>
+      <span>
+        <p>SENHA</p>
+        <Input type="password" name="password" placeholder="********" required />
+      </span>
+
+      <span>
+        <p>CONFIRMAR SENHA</p>
+        <Input type="password" name="confirm-password" placeholder="********" required />
+      </span>
+    </div>
+
+    <div>
+      <span>
+        <p>IDADE</p>
+        <Input
+          mask="99"
+          maskChar={null}
+          type="text"
+          name="age"
+          placeholder="45"
+          required
+        />
+      </span>
+
+      <span>
+        <p>TIPO SANGUÍNEO</p>
+        <Input
+          type="text"
+          name="blood-type"
+          placeholder="B+"
+          required
+        />
+      </span>
+
+      <span>
+        <p>PESO (em kg)</p>
+        <Input
+          mask="99.9"
+          maskChar={null}
+          type="text"
+          name="weight"
+          placeholder="73.0"
+          required
+        />
+      </span>
+
+      <span>
+        <p>ALTURA</p>
+        <Input
+          mask="9.99"
+          maskChar={null}
+          type="text"
+          name="height"
+          placeholder="1.82"
+          required
+        />
+      </span>
+
+      <span>
+        <p>IMC</p>
+        <Input
+          type="text"
+          name="imc"
+          placeholder="22.1"
+          required
+          disabled
+        />
+      </span>
+    </div>
+
+    <div>
+      <span>
+        <p>OBJETIVO</p>
+        <Input
+          type="text"
+          name="objective"
+          placeholder="Ganho de massa magra"
+          required
+        />
+      </span>
+
+      <span>
+        <p>BODY FAT</p>
+        <Input
+          type="text"
+          name="bodyfat"
+          placeholder="9.8%"
+        />
+      </span>
+
+      <span>
+        <p>GASTO CALÓRICO</p>
+        <Input
+          type="text"
+          name="basal"
+          placeholder="2700 kcal"
+        />
+      </span>
+    </div>
+
+    <p>ENDEREÇO</p>
+    <Input type="text" name="address" placeholder="Servidão João Nadir da Silva, 82" required />
+
+    <div>
+      <span>
+        <p>CEP</p>
+        <Input type="text" name="cep" placeholder="88040-455" required />
+      </span>
+
+      <span>
+        <p>CIDADE</p>
+        <Input type="text" name="city" placeholder="Florianópolis" required />
+      </span>
+
+      <span>
+        <p>ESTADO</p>
+        <Input type="text" name="state" placeholder="Santa Catarina" required />
+      </span>
+
+      <span>
+        <p>BAIRRO</p>
+        <Input type="text" name="neighbor" placeholder="Trindade" required />
+      </span>
+    </div>
+
+    <p>OBSERVAÇÕES</p>
+    <textarea name="obs" rows="7" placeholder="Prolapso da válvula mitral"></textarea>
+  </div>
+</form>
+{% endblock %}

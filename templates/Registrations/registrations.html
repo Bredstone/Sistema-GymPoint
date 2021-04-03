@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<header>
+  <p style="display:none">{% block title %} GymPoint | Matrículas {% endblock %}</p>
+  <h1>Gerenciando matrículas</h1>
+  <aside>
+    <a href="/create-registration">
+      <span class="material-icons" style="color:#FFF; font-size:20px;">
+        add
+      </span>
+      Cadastrar
+    </a>
+  </aside>
+</header>
+
+<table cellSpacing="0" class="list">
+  <thead>
+    <tr>
+      <th>ALUNO</th>
+      <th id="center">PLANO</th>
+      <th id="center">INÍCIO</th>
+      <th id="center">TÉRMINO</th>
+      <th id="center">ATIVA</th>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Brendon Vicente Rocha Silva</td>
+      <td id="center">Gold</td>
+      <td id="center">30/03/2021</td>
+      <td id="center">30/06/2021</td>
+      <td id="center">
+        <span class="material-icons" style="color:#42cb59; font-size:20px;">
+          check_circle_outline
+        </span>
+      </td>
+      <td id="update">
+        <a href="#" id="update">
+          editar
+        </a>
+      </td>
+      <td id="delete">
+        <button type="button" id="delete">
+          apagar
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td>Brendon Vicente Rocha Silva</td>
+      <td id="center">Gold</td>
+      <td id="center">30/03/2021</td>
+      <td id="center">30/06/2021</td>
+      <td id="center">
+        <span class="material-icons" style="color:#42cb59; font-size:20px;">
+          check_circle_outline
+        </span>
+      </td>
+      <td id="update">
+        <a href="#" id="update">
+          editar
+        </a>
+      </td>
+      <td id="delete">
+        <button type="button" id="delete">
+          apagar
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td>Brendon Vicente Rocha Silva</td>
+      <td id="center">Gold</td>
+      <td id="center">30/03/2021</td>
+      <td id="center">30/06/2021</td>
+      <td id="center">
+        <span class="material-icons" style="color:#999; font-size:20px;">
+          check_circle_outline
+        </span>
+      </td>
+      <td id="update">
+        <a href="#" id="update">
+          editar
+        </a>
+      </td>
+      <td id="delete">
+        <button type="button" id="delete">
+          apagar
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td>Brendon Vicente Rocha Silva</td>
+      <td id="center">Gold</td>
+      <td id="center">30/03/2021</td>
+      <td id="center">30/06/2021</td>
+      <td id="center">
+        <span class="material-icons" style="color:#42cb59; font-size:20px;">
+          check_circle_outline
+        </span>
+      </td>
+      <td id="update">
+        <a href="#" id="update">
+          editar
+        </a>
+      </td>
+      <td id="delete">
+        <button type="button" id="delete">
+          apagar
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+{% endblock %}

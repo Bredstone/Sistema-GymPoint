@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<header>
+  <p style="display:none">{% block title %} GymPoint | Planos {% endblock %}</p>
+  <h1>Gerenciando planos</h1>
+  <aside>
+    <a href="/create-plan">
+      <span class="material-icons" style="color:#FFF; font-size:20px;">
+        add
+      </span>
+      Cadastrar
+    </a>
+  </aside>
+</header>
+
+<table cellSpacing="0" class="list">
+  <thead>
+    <tr>
+      <th>TÍTULO</th>
+      <th id="center">DURAÇÃO</th>
+      <th id="center">VALOR p/ MÊS</th>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Gold</td>
+      <td id="center">3 Meses</td>
+      <td id="center">R$ 139,90</td>
+      <td id="update">
+        <a href=# id="update">
+          editar
+        </a>
+      </td>
+      <td id="delete">
+        <button type="button" id="delete">
+          apagar
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td>Gold</td>
+      <td id="center">3 Meses</td>
+      <td id="center">R$ 139,90</td>
+      <td id="update">
+        <a href=# id="update">
+          editar
+        </a>
+      </td>
+      <td id="delete">
+        <button type="button" id="delete">
+          apagar
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td>Gold</td>
+      <td id="center">3 Meses</td>
+      <td id="center">R$ 139,90</td>
+      <td id="update">
+        <a href=# id="update">
+          editar
+        </a>
+      </td>
+      <td id="delete">
+        <button type="button" id="delete">
+          apagar
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+{% endblock %}

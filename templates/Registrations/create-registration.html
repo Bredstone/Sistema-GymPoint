@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form>
+  <header>
+    <p style="display:none">{% block title %} GymPoint | Cadastro de Matrícula {% endblock %}</p>
+    <h1>Cadastro de matrícula</h1>
+    <aside>
+      <a href="/registrations" id="back">
+        <span class="material-icons" style="color:#FFF; font-size:20px;">
+          keyboard_arrow_left
+        </span>
+        Voltar
+      </a>
+      <button type="submit">
+        <span class="material-icons" style="color:#FFF; font-size:20px;">
+          check
+        </span>
+        Salvar
+      </button>
+    </aside>
+  </header>
+
+  <div class="container">
+    <p>ALUNO</p>
+    <footer>
+      <Input
+        name="studentId"
+        className="select"
+        required
+      />
+    </footer>
+
+    <div>
+      <span>
+        <p>PLANO</p>
+        <footer>
+          <Input
+            name="planId"
+            className="select"
+            required
+          />
+        </footer>
+      </span>
+
+      <span>
+        <p>DATA DE INÍCIO</p>
+        <Input
+          name="date"
+          dateFormat="dd/MM/yyyy"
+        />
+      </span>
+
+      <span>
+        <p>DATA DE TÉRMINO</p>
+        <Input
+          name="endDate"
+          dateFormat="dd/MM/yyyy"
+          selected={endDate}
+          disabled
+        />
+      </span>
+
+      <span>
+        <p>VALOR FINAL</p>
+        <Input
+          type="text"
+          name="total"
+          disabled
+        />
+      </span>
+    </div>
+  </Container>
+</form>
+{% endblock %}

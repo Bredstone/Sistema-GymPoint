@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form>
+  <header>
+    <p style="display:none">{% block title %} GymPoint | Cadastro de Plano {% endblock %}</p>
+    <h1>Cadastro de plano</h1>
+    <aside>
+      <a href="/plans" id="back">
+        <span class="material-icons" style="color:#FFF; font-size:20px;">
+          keyboard_arrow_left
+        </span>
+        Voltar
+      </a>
+      <button type="submit">
+        <span class="material-icons" style="color:#FFF; font-size:20px;">
+          check
+        </span>
+        Salvar
+      </button>
+    </aside>
+  </header>
+
+  <div class="container">
+    <p>TÍTULO DO PLANO</p>
+    <Input type="text" name="title" placeholder="Platinum" required />
+
+    <div>
+      <span>
+        <p>DURAÇÃO (em meses)</p>
+        <Input
+          mask="99"
+          maskChar={null}
+          type="text"
+          name="duration"
+          placeholder="12 meses"
+          required
+        />
+      </span>
+
+      <span>
+        <p>PREÇO MENSAL</p>
+        <Input
+          type="text"
+          name="price"
+          placeholder="R$ 49,90"
+          required
+        />
+      </span>
+
+      <span>
+        <p>PREÇO TOTAL</p>
+        <input type="text" placeholder="R$ 598,80" disabled />
+      </span>
+    </div>
+  </div>
+</form>
+{% endblock %}

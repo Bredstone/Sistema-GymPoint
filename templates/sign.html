@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/global.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/sign.css') }}">
+
+    <title>GymPoint | Entrar</title>
+  </head>
+  <body>
+    <div class="container">
+      <Form onSubmit="">
+        <img src="{{ url_for('static', filename='img/logo.svg') }}" alt="logo" />
+        <p>SEU E-MAIL</p>
+        <Input
+          type="email"
+          name="email"
+          placeholder="example@email.com"
+          required
+        />
+
+        <p>SUA SENHA</p>
+        <Input
+          type="password"
+          name="password"
+          placeholder="**********"
+          required
+        />
+
+        <button type="submit">
+          Entrar no sistema
+        </button>
+      </Form>
+    </div>
+  </body>
+</html>

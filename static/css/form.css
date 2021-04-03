@@ -1,0 +1,56 @@
+.container {
+  display: flex;
+  align-self: center;
+  flex-direction: column;
+  max-width: 900px;
+  width: 100%;
+  min-width: 750px;
+  background: #fff;
+  padding: 30px;
+  border-radius: 4px;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+  margin: 20px 0;
+}
+.container input {
+  width: 100%;
+}
+.container > div {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+}
+.container > div > span {
+  display: flex;
+  flex-direction: column;
+  min-width: 150px;
+  flex: 1;
+}
+.container > div .checkbox {
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  min-width: 0px;
+  flex: 1 auto;
+}
+.container > div .checkbox:first-child {
+  justify-content: flex-start;
+}
+.container > div .checkbox:last-child {
+  justify-content: flex-end;
+}
+.container > div .checkbox input {
+  width: auto;
+  margin-right: 8px;
+}
+.container > div > span + span {
+  margin-left: 16px;
+}
+.container .select {
+  margin-top: 8px;
+}
+.container .select > div {
+  border: 1px solid #ddd;
+}
+.container .select > div > div > div {
+  margin: 0;
+}
