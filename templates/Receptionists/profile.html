@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form>
+  <header>
+    <p style="display:none">{% block title %} GymPoint | Perfil {% endblock %}</p>
+    <h1>Brendon Vicente Rocha Silva</h1>
+    <aside>
+      <button type="submit">
+        <span class="material-icons" style="color:#FFF; font-size:20px;">
+          check
+        </span>
+        Salvar
+      </button>
+    </aside>
+  </header>
+
+  <div class="container">
+    <div>
+      <img class="profile-pic" src="https://api.multiavatar.com/d100ccabf7fa614d2e.png" />
+      <div>
+        <p>NOME COMPLETO</p>
+        <Input type="text" name="name" placeholder="Ethan Hunt" required />
+        <div>
+          <span>
+            <p>CPF</p>
+            <Input type="text" name="cpf" value="476.582.928-69" disabled />
+          </span>
+
+          <span>
+            <p>ENDEREÇO DE EMAIL</p>
+            <Input
+              type="email"
+              name="email"
+              value="exemplo@email.com"
+              disabled
+            />
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <span>
+        <p>TELEFONE</p>
+        <Input type="text" name="phone" placeholder="(48) 99999-9999" required />
+      </span>
+
+      <span>
+        <p>TELEFONE 2</p>
+        <Input type="text" name="phone-2" placeholder="(48) 99999-9999" />
+      </span>
+    </div>
+
+    <div>
+      <span>
+        <p>HORÁRIO DE ATENDIMENTO (início)</p>
+        <Input type="text" name="office-hours-begin" placeholder="07:30" required />
+      </span>
+
+      <span>
+        <p>HORÁRIO DE ATENDIMENTO (fim)</p>
+        <Input type="text" name="office-hours-end" placeholder="16:30" required />
+      </span>
+    </div>
+
+    <p>DIAS DE ATENDIMENTO</p>
+    <div>
+      <span class="checkbox">
+        <input type="checkbox" name="sunday" checked>
+        <label for="sunday">Domingo</label>
+      </span>
+
+      <span class="checkbox">
+        <input type="checkbox" name="monday" checked>
+        <label for="monday">Segunda-feira</label>
+      </span>
+
+      <span class="checkbox">
+        <input type="checkbox" name="tuesday" checked>
+        <label for="tuesday">Terça-feira</label>
+      </span>
+
+      <span class="checkbox">
+        <input type="checkbox" name="wednesday" checked>
+        <label for="wednesday">Quarta-feira</label>
+      </span>
+
+      <span class="checkbox">
+        <input type="checkbox" name="thursday" checked>
+        <label for="thursday">Quinta-feira</label>
+      </span>
+
+      <span class="checkbox">
+        <input type="checkbox" name="friday" checked>
+        <label for="friday">Sexta-feira</label>
+      </span>
+
+      <span class="checkbox">
+        <input type="checkbox" name="saturday" checked>
+        <label for="saturday">Sábado</label>
+      </span>
+    </div>
+
+    <p>ENDEREÇO</p>
+    <Input type="text" name="address" placeholder="Servidão João Nadir da Silva, 82" required />
+
+    <div>
+      <span>
+        <p>CEP</p>
+        <Input type="text" name="cep" placeholder="88040-455" required />
+      </span>
+
+      <span>
+        <p>CIDADE</p>
+        <Input type="text" name="city" placeholder="Florianópolis" required />
+      </span>
+
+      <span>
+        <p>ESTADO</p>
+        <Input type="text" name="state" placeholder="Santa Catarina" required />
+      </span>
+
+      <span>
+        <p>BAIRRO</p>
+        <Input type="text" name="neighbor" placeholder="Trindade" required />
+      </span>
+    </div>
+  </div>
+</form>
+{% endblock %}

@@ -5,11 +5,12 @@
 
     <link rel="stylesheet" href="{{ url_for('static', filename= 'css/global.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename= 'css/header.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/content.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/student-content.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename= 'css/list.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/form.css') }}">
 
     <title>{% block title %} {% endblock %}</title>
+
+    {% block script %} {% endblock %}
   </head>
   <body>
     <!--Header-->
@@ -18,12 +19,9 @@
         <nav>
           <img src="{{ url_for('static', filename='img/logo-header.svg') }}" alt="logo" />
           
-          <a href="/receptionist-profile">Perfil</a>
-          <a href="/students">Alunos</a>
-          <a href="/plans">Planos</a>
-          <a href="/registrations">Matrículas</a>
-          <a href="/trainers">Treinadores</a>
-          <a href="/receptionists">Recepcionistas</a>
+          <a href="/student-profile">Perfil</a>
+          <a href="/">Treinos</a>
+          <a href="/">Mensagens</a>
         </nav>
 
         <aside>

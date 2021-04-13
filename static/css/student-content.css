@@ -1,0 +1,117 @@
+.wrapper {
+  display: flex;
+  flex: 1;
+  height: calc(100% - 64px);
+  background-image: linear-gradient(45deg, #b9478a 1%, #ee4d64 45%, #ffdb66 90%);
+  padding: 0px;
+  justify-content: center;
+}
+
+.content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.content header {
+  width: 100%;
+  min-width: 1200px;
+  height: 225px;
+  padding: 30px;
+  background-color: #58295f;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.content header .left {
+  margin-top: 123px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+.content header img {
+  margin-right: 36px;
+  height: 200px;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
+  border: 4px solid #58295f;
+  border-radius: 50%;
+  z-index: 1;
+}
+.content header h1 {
+  font-size: 24px;
+  color: #FFF;
+}
+.content header p {
+  font-weight: 400;
+  color: #FFF;
+}
+.content header aside {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-end;
+  align-items: flex-end;
+}
+.content header aside span {
+  display: flex;
+  flex-direction: row;
+}
+.content header aside .badge {
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90px;
+  height: 90px;
+  flex-direction: column;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  border: 4px solid #42cb59;
+}
+.content header aside .badge + .badge {
+  margin-left: 30px;
+}
+.content header aside .badge p {
+  font-weight: 300;
+  font-size: 12px;
+  margin: 0;
+}
+.content header aside .badge .data {
+  margin-top: 5px;
+  font-weight: bold;
+  font-size: 18px;
+}
+.content header a {
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+  background: #ee4d64;
+  padding: 8px 16px;
+  color: #fff;
+  text-transform: uppercase;
+  transition: background 0.2s;
+}
+.content header a span {
+  margin-right: 8px;
+}
+.content header a:hover {
+  background: #bd3232;
+}
+
+.content .info {
+  width: 100%;
+  height: 100%;
+  padding: 0 30px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+.content .info img {
+  height: 90%;
+  margin: 30px;
+  margin-left: 0;
+}
+.content .info .chart {
+  width: 100%;
+}

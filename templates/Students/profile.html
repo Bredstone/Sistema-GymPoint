@@ -1,0 +1,58 @@
+{% extends 'student-base.html' %}
+
+{% block content %}
+<header>
+  <p style="display:none">{% block title %} GymPoint | Perfil {% endblock %}</p>
+
+  <div class="left">
+    <img class="profile-pic" src="{{ url_for('static', filename='img/profile.jpeg') }}" />
+    <span>
+      <h1>BRENDON VICENTE ROCHA SILVA</h1>
+      <p>bredstone13@gmail.com</p>
+    </span>
+  </div>
+
+  <aside>
+    <span>
+      <div class="badge">
+        <p>IDADE</p>
+        <p class="data">21</p>
+      </div>
+      <div class="badge">
+        <p>PESO</p>
+        <p class="data">61.5Kg</p>
+      </div>
+      <div class="badge">
+        <p>% FAT</p>
+        <p class="data">9.8%</p>
+      </div>
+      <div class="badge">
+        <p>IMC</p>
+        <p class="data">22.1</p>
+      </div>
+    </span>
+    <a href="/create-student">
+      Editar Perfil
+    </a>
+  </aside>
+</header>
+
+<div class="info">
+  <img src="{{ url_for('static', filename='img/lettering.svg') }}" alt="GET YOUR BETTER SHAPE" />
+
+  <table cellSpacing="0" class="list">
+    <thead>
+      <tr>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <img class="chart" src="{{ url_for('static', filename='img/chart.svg') }}" />
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+{% endblock %}

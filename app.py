@@ -2,13 +2,17 @@ from flask import Flask, render_template
 
 app = Flask(__name__)
 
-@app.route('/users')
-def users():
-  return render_template('Users/users.html')
+@app.route('/')
+def sign():
+  return render_template('sign.html')
 
-@app.route('/create-user')
-def createUser():
-  return render_template('Users/create-user.html')
+@app.route('/students')
+def students():
+  return render_template('Students/students.html')
+
+@app.route('/create-student')
+def createStudent():
+  return render_template('Students/create-student.html')
 
 @app.route('/plans')
 def plans():
@@ -38,10 +42,14 @@ def createTrainer():
 def receptionists():
   return render_template('Receptionists/receptionists.html')
 
+@app.route('/receptionist-profile')
+def recepcionistProfile():
+  return render_template('Receptionists/profile.html')
+
 @app.route('/create-receptionist')
 def createReceptionist():
   return render_template('Receptionists/create-receptionist.html')
 
-@app.route('/sign')
-def sign():
-  return render_template('sign.html')
+@app.route('/student-profile')
+def StudentProfile():
+  return render_template('Students/profile.html')
