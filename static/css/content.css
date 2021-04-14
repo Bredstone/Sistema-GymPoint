@@ -9,14 +9,14 @@
 
 .content {
   width: 100%;
+  max-width: 1200px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 .content header {
   width: 100%;
-  max-width: 1200px;
-  min-width: 800px;
+  min-width: 750px;
   display: flex;
   flex-direction: row;
   align-items: center;

@@ -26,7 +26,7 @@
   justify-content: space-between;
 }
 .content header .left {
-  margin-top: 123px;
+  margin-top: 115px;
   display: flex;
   align-items: center;
   flex-direction: row;
@@ -40,11 +40,15 @@
   z-index: 1;
 }
 .content header h1 {
-  font-size: 24px;
+  font-size: 30px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #FFF;
+  margin-bottom: 4px;
   color: #FFF;
 }
 .content header p {
   font-weight: 400;
+  margin-top: 0;
   color: #FFF;
 }
 .content header aside {
@@ -108,8 +112,8 @@
   flex-direction: row;
 }
 .content .info img {
-  height: 90%;
-  margin: 30px;
+  height: 56vh;
+  margin: 20px;
   margin-left: 0;
 }
 .content .info .chart {

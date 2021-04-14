@@ -1,8 +1,6 @@
 .container {
   display: flex;
-  align-self: center;
   flex-direction: column;
-  max-width: 900px;
   width: 100%;
   min-width: 750px;
   background: #fff;
@@ -10,6 +8,13 @@
   border-radius: 4px;
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
   margin: 20px 0;
+}
+.container h1 {
+  align-self: center;
+  color: #ee4d64;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #ee4d64;
+  margin-bottom: 4px;
 }
 .container input {
   width: 100%;
