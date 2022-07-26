@@ -9,13 +9,6 @@
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
   margin: 20px 0;
 }
-.container h1 {
-  align-self: center;
-  color: #ee4d64;
-  padding-bottom: 4px;
-  border-bottom: 1px solid #ee4d64;
-  margin-bottom: 4px;
-}
 .container input {
   width: 100%;
 }
@@ -77,12 +70,7 @@
 .container > div > span + span {
   margin-left: 16px;
 }
-.container .select {
-  margin-top: 8px;
-}
-.container .select > div {
-  border: 1px solid #ddd;
-}
-.container .select > div > div > div {
-  margin: 0;
+.container .number {
+  flex: 0;
+  min-width: 10%;
 }

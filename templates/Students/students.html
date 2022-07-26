@@ -30,70 +30,26 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>Brendon Vicente Rocha Silva</td>
-      <td>bredstone13@gmail.com</td>
-      <td>476.582.928-69</td>
-      <td id="center">21</td>
-      <td id="update">
-        <a href="#" id="update">
-          editar
-        </a>
-      </td>
-      <td id="delete">
-        <button type="button" id="delete">
-          apagar
-        </button>
-      </td>
-    </tr>
-    <tr>
-      <td>Brendon Vicente Rocha Silva</td>
-      <td>bredstone13@gmail.com</td>
-      <td>476.582.928-69</td>
-      <td id="center">21</td>
-      <td id="update">
-        <a href="#" id="update">
-          editar
-        </a>
-      </td>
-      <td id="delete">
-        <button type="button" id="delete">
-          apagar
-        </button>
-      </td>
-    </tr>
-    <tr>
-      <td>Brendon Vicente Rocha Silva</td>
-      <td>bredstone13@gmail.com</td>
-      <td>476.582.928-69</td>
-      <td id="center">21</td>
-      <td id="update">
-        <a href="#" id="update">
-          editar
-        </a>
-      </td>
-      <td id="delete">
-        <button type="button" id="delete">
-          apagar
-        </button>
-      </td>
-    </tr>
-    <tr>
-      <td>Brendon Vicente Rocha Silva</td>
-      <td>bredstone13@gmail.com</td>
-      <td>476.582.928-69</td>
-      <td id="center">21</td>
-      <td id="update">
-        <a href="#" id="update">
-          editar
-        </a>
-      </td>
-      <td id="delete">
-        <button type="button" id="delete">
-          apagar
-        </button>
-      </td>
-    </tr>
+    {% for student in students %}
+      <tr>
+        <td>{{ student['name'] }}</td>
+        <td>{{ student['email'] }}</td>
+        <td>{{ student['CPF'] }}</td>
+        <td id="center">{{ getAge(student['birth_date']) }}</td>
+        <td id="update">
+          <a href="#" id="update">
+            editar
+          </a>
+        </td>
+        <td id="delete">
+          <a href="/delete-student/{{ student['id'] }}"
+             type="button" id="delete" 
+             onclick="return confirm('Tem certeza de que quer excluir este aluno?')">
+            apagar
+          </a>
+        </td>
+      </tr>
+    {% endfor %}
   </tbody>
 </table>
 {% endblock %}

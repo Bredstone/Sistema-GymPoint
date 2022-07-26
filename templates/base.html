@@ -2,12 +2,34 @@
 <html lang="en">
   <head>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
 
     <link rel="stylesheet" href="{{ url_for('static', filename= 'css/global.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename= 'css/header.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename= 'css/content.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename= 'css/list.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename= 'css/form.css') }}">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+
+    {% block script %} {% endblock %}
+
+    {% for category, message in get_flashed_messages(with_categories=true) %}
+      <script>
+        window.onload = function() {
+          var notyf = new Notyf();
+
+          if('{{ category }}' == 'success') {
+            notyf.success('{{ message }}');
+          } else {
+            notyf.error('{{ message }}');
+          }
+        };
+      </script>
+    {% endfor %}
 
     <title>{% block title %} {% endblock %}</title>
   </head>
@@ -37,7 +59,7 @@
 
     <!--Content-->
     <div class="wrapper">
-      <div class="content" size=200 >{% block content %} {% endblock %}</div>
+      <div class="content" size=200 >{% block content %} {% endblock %}</div>      
     </div>
   </body>
 </html>

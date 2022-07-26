@@ -1,0 +1,4 @@
+flask
+validate-docbr
+email-validator
+pycep-correios

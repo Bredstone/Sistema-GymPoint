@@ -2,12 +2,14 @@ DROP TABLE IF EXISTS Users;
 DROP TABLE IF EXISTS Students;
 DROP TABLE IF EXISTS Trainers;
 DROP TABLE IF EXISTS Receptionists;
+DROP TABLE IF EXISTS Plans;
 
 CREATE TABLE Users (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   name VARCHAR(100) NOT NULL,
-  CPF VARCHAR(14) NOT NULL UNIQUE,
+  cpf VARCHAR(14) NOT NULL UNIQUE,
   email VARCHAR(60) NOT NULL UNIQUE,
+  password VARCHAR(20) NOT NULL,
   phone VARCHAR(19) NOT NULL,
   phone_alt VARCHAR(19),
   cep VARCHAR(9) NOT NULL,
@@ -16,12 +18,12 @@ CREATE TABLE Users (
 );
 
 CREATE TABLE Students (
-  id INTEGER NOT NULL,
-  password VARCHAR(20) NOT NULL,
+  id INTEGER PRIMARY KEY,
   birth_date DATETIME NOT NULL,
   blood_type VARCHAR(3) NOT NULL,
   weight DECIMAL(4, 1) NOT NULL,
   height DECIMAL(3, 2) NOT NULL,
+  gender VARCHAR(9) NOT NULL,
   objective VARCHAR(60) NOT NULL,
   body_fat DECIMAL(3, 1),
   observations VARCHAR(255),
@@ -29,7 +31,7 @@ CREATE TABLE Students (
 );
 
 CREATE TABLE Trainers (
-  id INTEGER NOT NULL,
+  id INTEGER PRIMARY KEY,
   hour_start TIME NOT NULL,
   hour_end TIME NOT NULL,
   service_days VARCHAR(255) NOT NULL,
@@ -37,10 +39,16 @@ CREATE TABLE Trainers (
 );
 
 CREATE TABLE Receptionists (
-  id INTEGER NOT NULL,
+  id INTEGER PRIMARY KEY,
   hour_start TIME NOT NULL,
   hour_end TIME NOT NULL,
   service_days VARCHAR(255) NOT NULL,
   FOREIGN KEY (id) REFERENCES Users(id)
 );
 
+CREATE TABLE Plans (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  title VARCHAR(40) NOT NULL UNIQUE,
+  duration INTEGER NOT NULL,
+  price DECIMAL(7, 2) NOT NULL
+);

@@ -1,7 +1,107 @@
 {% extends 'base.html' %}
 
+{% block script %}
+<script type="text/javascript">
+  function imcCalc() {
+    var weight = parseFloat($('#weight').val().replace(',', '.'));
+    var height = parseFloat($('#height').val().replace(',', '.'));
+    var imc = weight / (height * height);
+    $('#imc').val(imc ? imc.toFixed(2).replace(".", ",") : '00,0');
+  };
+
+  function getAge(birth_date) {
+    if(birth_date != '' && birth_date.length == 10) {
+      var birth = new Date(birth_date.substring(6,10),
+                          birth_date.substring(0,2)-1,
+                          birth_date.substring(3,5));
+      var today = new Date();
+      return Math.floor((today - birth) / (365.25 * 24 * 60 * 60 * 1000));
+    } else {
+      return 'x';
+    }
+  }
+
+  function bmrCalc() {
+    var weight = parseFloat($('#weight').val().replace(',', '.'));
+    var height = parseFloat($('#height').val().replace(',', '.'));
+    var bf = parseFloat($('#body-fat').val().replace(',', '.').replace('%', ''));
+    var age = getAge($('#birth-date').val());
+
+    if(bf) {
+      var basal = 370 + 21.6 * (1 - bf / 100) * weight;
+    } else {
+      if($('#gender').val() == 'Masculino') {
+        var basal = 13.397 * weight + 4.799 * (height * 100) - 5.677 * age + 88.362;
+      } else {
+        var basal = 9.247 * weight + 3.098 * (height * 100) - 4.330 * age + 447.593;
+      }
+    }
+    
+    $('#basal').val(basal ? parseInt(1.2 * basal) + ' kcal' : '0000 kcal');
+  };
+
+  function cleanAddress() {
+    $("#street-name").val('');
+    $("#neighbor").val('');
+    $("#city").val('');
+    $("#state").val('');
+  }
+
+  function getAddress() {
+    var cep = $('#cep').val().replace('-', '');
+    
+    if(cep.length == 8) {
+      $.getJSON("https://viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados) {
+        if (!("erro" in dados)) {
+          $("#street-name").val(dados.logradouro);
+          $("#neighbor").val(dados.bairro);
+          $("#city").val(dados.localidade);
+          $("#state").val(dados.uf);
+        }
+        else {
+          cleanAddress();
+          var notyf = new Notyf();
+          notyf.error('CEP inválido!');
+        }
+      });
+    } else {
+      cleanAddress();
+    }
+  }
+
+  $(function() {
+    imcCalc();
+    bmrCalc();
+    getAddress();
+
+    var SPMaskBehavior = function (val) {
+      return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
+    },
+    spOptions = {
+      onKeyPress: function(val, e, field, options) {
+          field.mask(SPMaskBehavior.apply({}, arguments), options);
+        }
+    };
+
+    $('#cpf').mask('000.000.000-00');
+    $('#phone').mask(SPMaskBehavior, spOptions);
+    $('#emergency-phone').mask(SPMaskBehavior, spOptions);
+    $('#birth-date').mask('00/00/0000');
+    $('#weight').mask('00,0');
+    $('#height').mask('0,00');
+    $('#body-fat').maskMoney({suffix: '%', decimal: ',', precision: 1});
+    $('#cep').mask('00000-000');
+    $('#number').mask('0#');
+
+    $('#weight, #height').on("load change keyup paste", imcCalc);
+    $('#weight, #height, #birth-date, #gender, #body-fat').on("load change keyup paste", bmrCalc);
+    $('#cep').on("load change keyup paste", getAddress);
+  })
+</script>
+{% endblock %}
+
 {% block content %}
-<form>
+<form method="post">
   <header>
     <p style="display:none">{% block title %} GymPoint | Cadastro de Aluno {% endblock %}</p>
     <h1>Cadastro de aluno</h1>
@@ -25,19 +125,35 @@
     <div>
       <span>
         <p>NOME COMPLETO</p>
-        <Input type="text" name="name" placeholder="Ethan Hunt" required />
+        <input
+          value="{{ request.form['name'] }}"
+          type="text" 
+          name="name" 
+          id="name" 
+          placeholder="Ethan Hunt" 
+          required 
+        />
       </span>
 
       <span>
         <p>CPF</p>
-        <Input type="text" name="cpf" placeholder="476.582.928-69" required />
+        <input
+          value="{{ request.form['cpf'] }}"
+          type="text" 
+          name="cpf" 
+          id="cpf" 
+          placeholder="999.999.999-99" 
+          required 
+        />
       </span>
     </div>
 
     <p>ENDEREÇO DE EMAIL</p>
-    <Input
+    <input
+      value="{{ request.form['email'] }}"
       type="email"
       name="email"
+      id="email"
       placeholder="exemplo@email.com"
       required
     />
@@ -45,79 +161,105 @@
     <div>
       <span>
         <p>TELEFONE</p>
-        <Input type="text" name="phone" placeholder="(13) 99135-3538" required />
+        <input 
+          value="{{ request.form['phone'] }}"
+          type="text" 
+          name="phone"
+          id="phone"
+          placeholder="(99) 9999-9999" 
+          required 
+        />
       </span>
 
       <span>
         <p>TELEFONE DE EMERGÊNCIA</p>
-        <Input type="text" name="emergency-phone" placeholder="(13) 98808-5713" required />
+        <input 
+          value="{{ request.form['emergency-phone'] }}"
+          type="text" 
+          name="emergency-phone"
+          id="emergency-phone"
+          placeholder="(99) 9999-9999" 
+          required 
+        />
       </span>
     </div>
 
     <div>
       <span>
         <p>SENHA</p>
-        <Input type="password" name="password" placeholder="********" required />
+        <input
+          type="password" 
+          name="password"
+          id="password"
+          placeholder="********" 
+          required 
+        />
       </span>
 
       <span>
         <p>CONFIRMAR SENHA</p>
-        <Input type="password" name="confirm-password" placeholder="********" required />
+        <input
+          type="password" 
+          name="confirm-password"
+          id="confirm-password"
+          placeholder="********" 
+          required 
+        />
       </span>
     </div>
 
     <div>
       <span>
         <p>DATA DE NASCIMENTO</p>
-        <Input
+        <input
+          value="{{ request.form['birth-date'] }}"
           type="text"
           name="birth-date"
-          placeholder="13/09/1999"
+          id="birth-date"
+          placeholder="01/01/1990"
           required
         />
       </span>
 
       <span>
-        <p>TIPO SANGUÍNEO</p>
-        <Input
-          type="text"
-          name="blood-type"
-          placeholder="B+"
-          required
-        />
+        <p>SEXO</p>
+        <select name="gender" id="gender" required>
+          <option {% if request.form['gender'] == 'Feminino' %} selected {% endif %} value="Feminino">Feminino</option>
+          <option {% if request.form['gender'] == 'Masculino' %} selected {% endif %} value="Masculino">Masculino</option>
+        </select>
       </span>
 
       <span>
         <p>PESO (em kg)</p>
-        <Input
-          mask="99.9"
-          maskChar={null}
+        <input
+          value="{{ request.form['weight'] }}"
           type="text"
           name="weight"
-          placeholder="73.0"
+          id="weight"
+          placeholder="75,5"
           required
         />
       </span>
 
       <span>
-        <p>ALTURA</p>
-        <Input
-          mask="9.99"
-          maskChar={null}
+        <p>ALTURA (em m)</p>
+        <input
+          value="{{ request.form['height'] }}"
           type="text"
           name="height"
-          placeholder="1.82"
+          id="height"
+          placeholder="1,70"
           required
         />
       </span>
 
       <span>
         <p>IMC</p>
-        <Input
+        <input
           type="text"
           name="imc"
-          placeholder="22.1"
-          required
+          id="imc"
+          placeholder="00,0"
           disabled
         />
       </span>
@@ -126,60 +268,106 @@
     <div>
       <span>
         <p>OBJETIVO</p>
-        <Input
-          type="text"
-          name="objective"
-          placeholder="Ganho de massa magra"
-          required
-        />
+        <select name="objective" id="objective" required>
+          <option selected="{{ request.form['objective'] == '0' }}" value="0">Ganho de massa magra</option>
+          <option selected="{{ request.form['objective'] == '1' }}" value="1">Aumento de resistência</option>
+          <option selected="{{ request.form['objective'] == '2' }}" value="2">Aumento de flexibilidade</option>
+          <option selected="{{ request.form['objective'] == '3' }}" value="3">Tornear os músculos</option>
+          <option selected="{{ request.form['objective'] == '4' }}" value="4">Queima de gordura</option>
+        </select>
+      </span>
+
+      <span>
+        <p>TIPO SANGUÍNEO</p>
+        <select name="blood-type" id="blood-type" required>
+          <option {% if request.form['blood-type'] == 'A +' %} selected {% endif %} value="A +">A +</option>
+          <option {% if request.form['blood-type'] == 'A -' %} selected {% endif %} value="A -">A -</option>
+          <option {% if request.form['blood-type'] == 'B +' %} selected {% endif %} value="B +">B +</option>
+          <option {% if request.form['blood-type'] == 'B -' %} selected {% endif %} value="B -">B -</option>
+          <option {% if request.form['blood-type'] == 'AB +' %} selected {% endif %} value="AB +">AB +</option>
+          <option {% if request.form['blood-type'] == 'AB -' %} selected {% endif %} value="AB -">AB -</option>
+          <option {% if request.form['blood-type'] == 'O +' %} selected {% endif %} value="O +">O +</option>
+          <option {% if request.form['blood-type'] == 'O -' %} selected {% endif %} value="O -">O -</option>
+        </select>
       </span>
 
       <span>
         <p>BODY FAT</p>
-        <Input
+        <input
+          value="{{ request.form['body-fat'] }}"
           type="text"
-          name="bodyfat"
-          placeholder="9.8%"
+          name="body-fat"
+          id="body-fat"
+          placeholder="20,0%"
+          maxlength="5"
         />
       </span>
 
       <span>
         <p>GASTO CALÓRICO</p>
-        <Input
+        <input
           type="text"
           name="basal"
-          placeholder="2700 kcal"
+          id="basal"
+          placeholder="0000 kcal"
+          disabled
         />
       </span>
     </div>
 
-    <p>ENDEREÇO</p>
-    <Input type="text" name="address" placeholder="Servidão João Nadir da Silva, 82" required />
+    <div>
+      <span>
+        <p>RUA</p>
+        <input type="text" name="street-name" id="street-name" disabled />
+      </span>
+
+      <span class="number">
+        <p>NÚMERO</p>
+        <input
+          value="{{ request.form['number'] }}"
+          type="text" 
+          name="number" 
+          id="number" 
+          required 
+        />
+      </span>
+    </div>
 
     <div>
       <span>
         <p>CEP</p>
-        <Input type="text" name="cep" placeholder="88040-455" required />
+        <input
+          value="{{ request.form['cep'] }}" 
+          type="text" 
+          name="cep" 
+          id="cep"
+          placeholder="99999-999"
+          required 
+        />
       </span>
 
       <span>
         <p>CIDADE</p>
-        <Input type="text" name="city" placeholder="Florianópolis" required />
+        <input type="text" name="city" id="city" disabled />
       </span>
 
       <span>
         <p>ESTADO</p>
-        <Input type="text" name="state" placeholder="Santa Catarina" required />
+        <input type="text" name="state" id="state" disabled />
       </span>
 
       <span>
         <p>BAIRRO</p>
-        <Input type="text" name="neighbor" placeholder="Trindade" required />
+        <Input type="text" name="neighbor" id="neighbor" disabled />
       </span>
     </div>
 
     <p>OBSERVAÇÕES</p>
-    <textarea name="obs" rows="7" placeholder="Prolapso da válvula mitral"></textarea>
+    <textarea
+      name="obs" 
+      id="obs" 
+      rows="7" 
+      placeholder="Escreva aqui algo que seu treinador deva saber">{{ request.form['obs'] }}</textarea>
   </div>
 </form>
 {% endblock %}

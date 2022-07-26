@@ -1,10 +1,11 @@
 .wrapper {
   display: flex;
+  flex-direction: column;
   flex: 1;
   height: calc(100% - 64px);
   background: #f5f5f5;
   padding: 30px;
-  justify-content: center;
+  align-items: center;
 }
 
 .content {

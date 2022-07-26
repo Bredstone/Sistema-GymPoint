@@ -1,7 +1,27 @@
 {% extends 'base.html' %}
 
+{% block script %}
+<script type="text/javascript">
+  function totalprice() {
+    var duration = parseInt($('#duration').val());
+    var price = parseFloat($('#price').val().replace('R$ ', '').replace('.', '').replace(',', '.'));
+    var total = duration * price;
+    $('#total').val('R$ ' + (total ? total.toLocaleString(undefined, { minimumFractionDigits: 2 }) : '0,00'));
+  };
+
+  $(function() {
+    totalprice();
+
+    $('#duration').mask('#0', {reverse: true});
+    $('#price').maskMoney({prefix: 'R$ ', decimal: ',', thousands: '.'});
+
+    $('#duration, #price').on("load change keyup paste", totalprice);
+  })
+</script>
+{% endblock %}
+
 {% block content %}
-<form>
+<form method="post">
   <header>
     <p style="display:none">{% block title %} GymPoint | Cadastro de Plano {% endblock %}</p>
     <h1>Cadastro de plano</h1>
@@ -22,35 +42,38 @@
   </header>
 
   <div class="container">
+    <input-mask alias="currency"></input-mask>
     <p>TÍTULO DO PLANO</p>
-    <Input type="text" name="title" placeholder="Platinum" required />
+    <input value="{{ request.form['title'] }}" type="text" name="title" id="title" placeholder="Platinum" required />
 
     <div>
       <span>
         <p>DURAÇÃO (em meses)</p>
-        <Input
-          mask="99"
-          maskChar={null}
+        <input
+          value="{{ request.form['duration'] }}"
           type="text"
           name="duration"
-          placeholder="12 meses"
+          id="duration"
+          placeholder="12"
           required
         />
       </span>
 
       <span>
         <p>PREÇO MENSAL</p>
-        <Input
+        <input
+          value="{{ request.form['price'] }}"
           type="text"
           name="price"
-          placeholder="R$ 49,90"
+          id="price"
+          placeholder="R$ 39,90"
           required
         />
       </span>
 
       <span>
         <p>PREÇO TOTAL</p>
-        <input type="text" placeholder="R$ 598,80" disabled />
+        <input value="R$ 0,00" type="text" name="total" id="total" disabled />
       </span>
     </div>
   </div>

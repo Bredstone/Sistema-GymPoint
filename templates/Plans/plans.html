@@ -25,51 +25,25 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>Gold</td>
-      <td id="center">3 Meses</td>
-      <td id="center">R$ 139,90</td>
-      <td id="update">
-        <a href=# id="update">
-          editar
-        </a>
-      </td>
-      <td id="delete">
-        <button type="button" id="delete">
-          apagar
-        </button>
-      </td>
-    </tr>
-    <tr>
-      <td>Gold</td>
-      <td id="center">3 Meses</td>
-      <td id="center">R$ 139,90</td>
-      <td id="update">
-        <a href=# id="update">
-          editar
-        </a>
-      </td>
-      <td id="delete">
-        <button type="button" id="delete">
-          apagar
-        </button>
-      </td>
-    </tr>
-    <tr>
-      <td>Gold</td>
-      <td id="center">3 Meses</td>
-      <td id="center">R$ 139,90</td>
-      <td id="update">
-        <a href=# id="update">
-          editar
-        </a>
-      </td>
-      <td id="delete">
-        <button type="button" id="delete">
-          apagar
-        </button>
-      </td>
-    </tr>
+    {% for plan in plans %}
+      <tr>
+        <td>{{ plan['title'] }}</td>
+        <td id="center">{{ plan['duration'] }} {{ (' Meses' if plan['duration'] != 1 else ' Mês') }}</td>
+        <td id="center">{{ formatPrice(plan['price']) }}</td>
+        <td id="update">
+          <a href="/edit-plan/{{ plan['id'] }}" id="update">
+            editar
+          </a>
+        </td>
+        <td id="delete">
+          <a href="/delete-plan/{{ plan['id'] }}"
+             type="button" id="delete" 
+             onclick="return confirm('Tem certeza de que quer deletar este plano?')">
+            apagar
+          </a>
+        </td>
+      </tr>
+    {% endfor %}
   </tbody>
 </table>
 {% endblock %}

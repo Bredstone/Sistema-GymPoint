@@ -29,66 +29,27 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>Brendon Vicente Rocha Silva</td>
-      <td>bredstone13@gmail.com</td>
-      <td id="center">07:30 - 16:30</td>
-      <td id="update">
-        <a href="#" id="update">
-          editar
-        </a>
-      </td>
-      <td id="delete">
-        <button type="button" id="delete">
-          apagar
-        </button>
-      </td>
-    </tr>
-    <tr>
-      <td>Brendon Vicente Rocha Silva</td>
-      <td>bredstone13@gmail.com</td>
-      <td id="center">07:30 - 16:30</td>
-      <td id="update">
-        <a href="#" id="update">
-          editar
-        </a>
-      </td>
-      <td id="delete">
-        <button type="button" id="delete">
-          apagar
-        </button>
-      </td>
-    </tr>
-    <tr>
-      <td>Brendon Vicente Rocha Silva</td>
-      <td>bredstone13@gmail.com</td>
-      <td id="center">07:30 - 16:30</td>
-      <td id="update">
-        <a href="#" id="update">
-          editar
-        </a>
-      </td>
-      <td id="delete">
-        <button type="button" id="delete">
-          apagar
-        </button>
-      </td>
-    </tr>
-    <tr>
-      <td>Brendon Vicente Rocha Silva</td>
-      <td>bredstone13@gmail.com</td>
-      <td id="center">07:30 - 16:30</td>
-      <td id="update">
-        <a href="#" id="update">
-          editar
-        </a>
-      </td>
-      <td id="delete">
-        <button type="button" id="delete">
-          apagar
-        </button>
-      </td>
-    </tr>
+    {% for trainer in trainers %}
+      <tr>
+        <td>{{ trainer['name'] }}</td>
+        <td>{{ trainer['email'] }}</td>
+        <td id="center">
+          {{ trainer['service_days'] }}
+          <br />
+          {{ formatHours(trainer['hour_start'], trainer['hour_end']) }}
+        </td>
+        <td id="update">
+          <a href="#" id="update">
+            editar
+          </a>
+        </td>
+        <td id="delete">
+          <button type="button" id="delete">
+            apagar
+          </button>
+        </td>
+      </tr>
+    {% endfor %}
   </tbody>
 </table>
 {% endblock %}
